@@ -1,11 +1,6 @@
 # IDE
 .idea/
+.vscode/
 
 # Stray/junk file
 /dev
-
-# Go build artifacts
-*.exe
-*.test
-*.out
-/loan-service

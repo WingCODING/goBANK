@@ -6,7 +6,13 @@
       "Bash(go get *)",
       "Bash(go mod *)",
       "Bash(gh auth *)",
-      "Bash(git ls-remote *)"
+      "Bash(git ls-remote *)",
+      "Bash(git push *)",
+      "Read(//home/wil/Documents/**)",
+      "Bash(set -e)",
+      "Bash(mv /home/wil/Documents/loan-service /home/wil/Documents/goBANK)",
+      "Bash(mkdir /home/wil/Documents/goBANK/loan-service)",
+      "Bash(git -C /home/wil/Documents/goBANK mv go.mod go.sum main.go internal loan-service/)"
     ]
   }
 }

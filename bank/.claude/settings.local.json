@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -version)",
+      "Bash(./mvnw -v)",
+      "Bash(./mvnw -q dependency:resolve dependency:resolve-plugins)",
+      "Bash(./mvnw validate *)",
+      "Bash(./mvnw test *)",
+      "Bash(cp src/main/resources/application.properties /tmp/app.bak)",
+      "Bash(iconv -f ISO-8859-1 -t UTF-8 /tmp/app.bak -o src/main/resources/application.properties)",
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\"; cat {}')",
+      "Bash(command -v psql)",
+      "Read(//usr/bin/**)",
+      "Bash(command -v podman)",
+      "Bash(./mvnw -q -o dependency:resolve)",
+      "Bash(./mvnw -q dependency:resolve)",
+      "Bash(./mvnw dependency:resolve)",
+      "Bash(./mvnw -q compile)",
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\"; cat \"{}\"')",
+      "Bash(./mvnw *)",
+      "Bash(awk '/APPLICATION FAILED TO START/{flag=1} flag{print} /Process terminated|BUILD FAILURE/{if\\(flag\\) exit}' /tmp/claude-1000/-home-wil-Documents-Bank/d0c402bb-8340-45ae-b806-86959bc9869c/scratchpad/app8081.log)",
+      "Bash(ps -eo pid,etime,cmd)",
+      "Bash(curl -s -o /tmp/claude-1000/-home-wil-Documents-Bank/d0c402bb-8340-45ae-b806-86959bc9869c/scratchpad/reg.txt -w 'HTTP %{http_code}\\\\n' -X POST http://localhost:8080/api/users -H 'Content-Type: application/json' -d '{\"name\":\"Teste V3\",\"email\":\"v3check@example.com\",\"cpf\":\"12345678901\",\"password\":\"senha12345\"}')",
+      "Bash(docker exec *)"
+    ]
+  }
+}

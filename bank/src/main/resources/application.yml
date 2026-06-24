@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/bank
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none      # o Flyway é dono do schema, não o Hibernate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+server:
+  error:
+    include-message: always
+    include-stacktrace: always
+jwt:
+  secret: troque-esta-chave-secreta-por-uma-bem-longa-no-minimo-32-caracteres
+  expiration: 3600000   # 1 hora, em milissegundos

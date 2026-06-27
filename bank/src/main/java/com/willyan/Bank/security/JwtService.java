@@ -25,10 +25,11 @@ public class JwtService {
 
     }
 
-    public String generateToken(String email){
+    public String generateToken(String email, String cpf){
         Date now = new Date();
         return Jwts.builder()
                 .subject(email)
+                .claim("cpf", cpf)   // permite que serviços (loan-service) derivem o tomador da identidade
                 .issuedAt(now)
                 .expiration(new Date(now.getTime() + expirationMs))
                 .signWith(signKey())

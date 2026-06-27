@@ -21,7 +21,31 @@
       "Bash(awk '/APPLICATION FAILED TO START/{flag=1} flag{print} /Process terminated|BUILD FAILURE/{if\\(flag\\) exit}' /tmp/claude-1000/-home-wil-Documents-Bank/d0c402bb-8340-45ae-b806-86959bc9869c/scratchpad/app8081.log)",
       "Bash(ps -eo pid,etime,cmd)",
       "Bash(curl -s -o /tmp/claude-1000/-home-wil-Documents-Bank/d0c402bb-8340-45ae-b806-86959bc9869c/scratchpad/reg.txt -w 'HTTP %{http_code}\\\\n' -X POST http://localhost:8080/api/users -H 'Content-Type: application/json' -d '{\"name\":\"Teste V3\",\"email\":\"v3check@example.com\",\"cpf\":\"12345678901\",\"password\":\"senha12345\"}')",
-      "Bash(docker exec *)"
+      "Bash(docker exec *)",
+      "Bash(break)",
+      "Bash(echo \"exited $?\")",
+      "Bash(pkill -f spring-boot:run)",
+      "Bash(curl -s -o /dev/null -w 'HTTP %{http_code}\\\\n' -X POST localhost:8080/internal/disburse -H 'Content-Type: application/json' -d '{\"borrowerCpf\":\"12345678901\",\"amount\":10.00}')",
+      "Bash(curl -s -o /dev/null -w 'HTTP %{http_code}\\\\n' -X POST localhost:8080/internal/disburse -H 'Content-Type: application/json' -H 'X-Internal-Key: errada' -d '{\"borrowerCpf\":\"12345678901\",\"amount\":10.00}')",
+      "Bash(curl -s -w '\\\\nHTTP %{http_code}\\\\n' -X POST localhost:8080/internal/disburse -H 'Content-Type: application/json' -H 'X-Internal-Key: chave-interna-de-servico-troque-em-producao' -d '{\"borrowerCpf\":\"12345678901\",\"amount\":10.00}')",
+      "Read(//home/wil/Documents/loan-service/**)",
+      "Read(//home/wil/Documents/**)",
+      "Read(//home/wil/Documents/goBANK/**)",
+      "Bash(go build *)",
+      "Bash(gofmt -l internal/config/config.go)",
+      "Bash(cat src/main/java/com/willyan/Bank/security/InternalApiKeyFilter.java)",
+      "Bash(cat src/main/resources/application.yml)",
+      "Bash(cat src/main/java/com/willyan/Bank/internal/InternalController.java)",
+      "Bash(gofmt -l internal/loan/repository.go)",
+      "Bash(PGPASSWORD=postgres psql *)",
+      "Bash(flatpak list *)",
+      "Read(//home/wil/.local/share/DBeaverData/**)",
+      "Read(//home/wil/.var/app/io.dbeaver.DBeaverCommunity/data/DBeaverData/**)",
+      "Bash(python3 -)",
+      "Bash(flutter emulators *)",
+      "Bash(adb devices *)",
+      "Bash(adb wait-for-device *)",
+      "Bash(adb shell *)"
     ]
   }
 }

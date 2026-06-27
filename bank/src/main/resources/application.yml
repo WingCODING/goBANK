@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/bank
-    username: postgres
-    password: postgres
+    url: ${BANK_DB_URL:jdbc:postgresql://localhost:5433/bank}
+    username: ${BANK_DB_USER:postgres}
+    password: ${BANK_DB_PASSWORD:postgres}
   jpa:
     hibernate:
       ddl-auto: none      # o Flyway é dono do schema, não o Hibernate
@@ -14,8 +14,15 @@ spring:
 
 server:
   error:
-    include-message: always
-    include-stacktrace: always
+    # mensagem amigável continua ligada; stacktrace fica OFF por padrão (não vaza em prod).
+    # Para depurar localmente: ERROR_INCLUDE_STACKTRACE=always
+    include-message: ${ERROR_INCLUDE_MESSAGE:always}
+    include-stacktrace: ${ERROR_INCLUDE_STACKTRACE:never}
 jwt:
-  secret: troque-esta-chave-secreta-por-uma-bem-longa-no-minimo-32-caracteres
-  expiration: 3600000   # 1 hora, em milissegundos
+  secret: ${JWT_SECRET:troque-esta-chave-secreta-por-uma-bem-longa-no-minimo-32-caracteres}
+  expiration: ${JWT_EXPIRATION:3600000}   # 1 hora, em milissegundos
+
+bank:
+  system-account-id: ${BANK_SYSTEM_ACCOUNT_ID:00000000-0000-0000-0000-0000000000a1}
+  internal:
+    service-key: ${BANK_SERVICE_KEY:chave-interna-de-servico-troque-em-producao}

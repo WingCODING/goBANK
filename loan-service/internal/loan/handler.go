@@ -6,6 +6,8 @@ import (
 	"net/http"
 
 	"github.com/shopspring/decimal"
+
+	"loan-service/internal/auth"
 )
 
 type Handler struct {
@@ -16,13 +18,20 @@ func NewHandler(service *Service) *Handler {
 	return &Handler{service: service}
 }
 
+// O tomador NÃO vem mais do corpo: é derivado da identidade autenticada (claim cpf
+// do JWT), para que ninguém possa pedir empréstimo/desembolso em nome de outro CPF.
 type createLoanRequest struct {
-	BorrowerCPF  string `json:"borrowerCpf"`
 	Principal    string `json:"principal"`
 	InterestRate string `json:"interestRate"`
 }
 
 func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
+	claims, ok := auth.ClaimsFromContext(r.Context())
+	if !ok || len(claims.CPF) != 11 {
+		writeError(w, http.StatusUnauthorized, "token sem CPF válido do tomador")
+		return
+	}
+
 	var req createLoanRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		writeError(w, http.StatusBadRequest, "JSON inválido")
@@ -43,13 +52,16 @@ func (h *Handler) Create(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	l, err := h.service.Create(r.Context(), req.BorrowerCPF, principal, rate)
+	l, err := h.service.Create(r.Context(), claims.CPF, principal, rate)
 	if err != nil {
-		if errors.Is(err, ErrInvalidAmount) || errors.Is(err, ErrInvalidCPF) {
+		switch {
+		case errors.Is(err, ErrInvalidAmount), errors.Is(err, ErrInvalidCPF):
 			writeError(w, http.StatusUnprocessableEntity, err.Error())
-			return
+		case errors.Is(err, ErrDisbursementFailed):
+			writeError(w, http.StatusBadGateway, err.Error())
+		default:
+			writeError(w, http.StatusInternalServerError, "erro ao criar empréstimo")
 		}
-		writeError(w, http.StatusInternalServerError, "erro ao criar empréstimo")
 		return
 	}
 

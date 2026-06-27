@@ -4,3 +4,8 @@
 
 # Stray/junk file
 /dev
+
+# Docs de trabalho / planejamento — não versionar (mantemos só o README.md)
+/GUIA-TERMINAL.md
+/DEPLOY.md
+/SYSTEM_DESIGN_PROMPT.md

@@ -1,17 +1,21 @@
 package loan
 
 import (
+	"errors"
 	"time"
 
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 )
 
+var ErrDisbursementFailed = errors.New("falha ao desembolsar o empréstimo")
+
 type Status string
 
 const (
 	StatusPending   Status = "PENDING"
 	StatusDisbursed Status = "DISBURSED"
+	StatusFailed    Status = "FAILED"
 )
 
 type Loan struct {

@@ -1,5 +1,7 @@
 # goBANK — Lumo · **V1**
 
+🇧🇷 Português · [🇬🇧 English version](README.en.md)
+
 Mini-banco digital de demonstração (projeto de portfólio). É um **monorepo** com
 3 componentes que se comunicam por HTTP/JSON, mais um banco PostgreSQL.
 
@@ -136,5 +138,17 @@ goBANK/
 
 _V1 — primeira versão funcional do stack completo (Bank + Loan + Lumo)._
 
+____
 
-Estej
+Esta é a primeira versão do projeto goBank, que opera com o frontend mobile em Flutter.
+O objetivo deste projeto é aprender e entender o fluxo de trabalho usando Spring Boot + Java. Além disso,
+desenvolvemos um projeto de empréstimo baseado em Golang, por sua velocidade e simplicidade.
+
+V2 — O que esperar:
+
+Para a versão 2, existe a expectativa de realizar testes com intensa transição entre os usuários simultaneamente e,
+assim, identificar dificuldades e problemas a serem melhorados.
+Obs.: O frontend foi desenvolvido totalmente por um agente de IA (Claude). O intuito do projeto está voltado ao backend, que foi desenvolvido com ajuda e estudo de IA,
+porém utilizado minimamente por princípios de aprendizado.
+
+O repositorio pode ser baixado e testado, porem voce deve configurar o seu database proprio 

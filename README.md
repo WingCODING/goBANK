@@ -33,6 +33,8 @@ Mini-banco digital de demonstração (projeto de portfólio). É um **monorepo**
 | **Lumo App** | Flutter (Riverpod 3 + go_router + dio) | — | Cliente mobile Android, 7 telas, pt-BR |
 | **PostgreSQL** | Postgres 17 (container) | 5433 | DBs `bank` e `loans` |
 
+![Arquitetura goBANK](imagens/Architeture.png)
+
 ---
 
 ## Bank Service (Java / Spring Boot) — `:8080`
@@ -133,3 +135,6 @@ goBANK/
 ---
 
 _V1 — primeira versão funcional do stack completo (Bank + Loan + Lumo)._
+
+
+Estej

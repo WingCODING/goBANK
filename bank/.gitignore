@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# === Perfis Spring locais / com segredos — NUNCA versionar ===
+# (não casa com o application.yml versionado, que só tem placeholders)
+application-local.yml
+application-local.yaml
+application-local.properties
+application-secret*.yml
+application-secret*.properties

@@ -14,3 +14,30 @@
 goflutterbank/README.md
 goflutterbank/design/design.md
 goflutterbank/skills/design.md
+
+# === Segredos / credenciais — NUNCA versionar ===
+# Os serviços leem todos os segredos de variáveis de ambiente; um .env é o lugar
+# natural onde alguém colaria credenciais reais por engano.
+.env
+.env.*
+!.env.example
+
+# Chaves / certificados / keystores
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+
+# Overrides locais por máquina (config.local.*, etc.)
+*.local.*
+
+# Config local do Claude Code (por máquina — não compartilhar)
+**/.claude/settings.local.json
+
+# Configs de serviços externos (podem conter chaves de projeto)
+**/google-services.json
+**/GoogleService-Info.plist
